@@ -20,7 +20,7 @@ class Weibo:
             os.mkdir(weibo_pic_path)
 
     def setKeyword(self, keywords:list):
-        self.keyword = "+".join(keywords)
+        self.key = "+".join(keywords)
 
     def __pic(self, mblog:dict, source:str, base_path:str):
         if 'pics' in mblog.keys():
