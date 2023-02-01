@@ -12,18 +12,19 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-from settings import weixin_article_path, weixin_cookie_path, record_url_local, weixin_import_onnx_path, weixin_charsets_path
+from settings import weixin_article_path, weixin_cookie_path, record_url_local, weixin_import_onnx_path, \
+    weixin_charsets_path, weixin_proxy
 from tools import log, getResModel, excel, download_pic
 
 
 class Weixin:
-    def __init__(self, serve=None):
+    def __init__(self):
         if not os.path.exists(weixin_article_path):
             os.mkdir(weixin_article_path)
 
         chrome_options = webdriver.ChromeOptions()
-        if serve is not None:
-            chrome_options.add_argument('--proxy-server={}'.format(serve))  # 隧道域名:端口号
+        if weixin_proxy is not None:
+            chrome_options.add_argument('--proxy-server={}'.format(weixin_proxy))  # 隧道域名:端口号
         chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_argument("--disable-blink-features")

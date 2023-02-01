@@ -85,3 +85,5 @@ weixin_cookie_path = "./微信cookies.txt"
 weixin_article_path = "./微信公众号文章/"
 # 搜狗微信 爬取页数
 weixin_page = 5
+# 搜狗微信 代理IP 使用快代理的隧道代理服务，可以不设置，但是爬取过多时可能会导致封IP
+weixin_proxy = None # "XXX.XXX.com:XXXXX"
