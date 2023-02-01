@@ -8,7 +8,7 @@ import requests
 import time
 from settings import picture_download_interval, record_type, record_source, record_keyword, record_author, record_title, \
     record_introduction, record_tags, record_caption, record_url_article, record_url_pic, record_url_local, log_path, \
-    excel_path, down_video, requests_timeout
+    excel_path, download_video_check, requests_timeout
 
 requests.DEFAULT_RETRIES = 5  # 增加重试连接次数
 
@@ -46,7 +46,7 @@ def download_pic(url:str, path:str):
     time.sleep(picture_download_interval)  # 停一下，别过分了
 
 def download_video(video_url: str, path:str, name:str):
-    if not down_video:
+    if not download_video_check:
         return
     # 使用sys.argv内置方法，可以在代码中输入CMD命令
     sys.argv = ['you-get', '-o', path, '-O', name, video_url, "--debug"]

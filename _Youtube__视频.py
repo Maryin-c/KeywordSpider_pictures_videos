@@ -8,7 +8,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from tools import excel, getResModel, download_pic, log
+from tools import excel, getResModel, download_pic, log, download_video
 
 
 class Youtube:
@@ -62,6 +62,7 @@ class Youtube:
                                             url_local=youtube_video_screen_shot_path + self.keyword + str(excel.nrows) + ".png")
                 print(temp)
                 download_pic(pic_url, temp[record_url_local])
+                download_video(url, youtube_video_path, self.keyword + str(excel.nrows))
                 excel.appendRecord(temp)
         except:
             log(traceback.format_exc())

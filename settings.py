@@ -5,7 +5,7 @@ picture_download_interval = 0.5
 requests_timeout = 30
 
 # 是否下载视频
-down_video = False
+download_video_check = False
 
 # excel 路径
 excel_path = "全部记录.xlsx"

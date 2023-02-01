@@ -106,7 +106,7 @@ class Bilibili:
                     temp = self.__divideBilibiliVideo(video)
                     print(temp)
                     excel.appendTagsFromList(temp[record_tags])
-                    # download_video(video['arcurl'], bilibili_video_path, self.keyword + str(excel.nrows))
+                    download_video(video['arcurl'], bilibili_video_path, self.keyword + str(excel.nrows))
                     self.__recordData(temp)
 
     def __analysisArticle(self, information: dict):
