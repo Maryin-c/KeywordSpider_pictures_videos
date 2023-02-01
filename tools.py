@@ -96,6 +96,7 @@ class Excel:
                 real_max_row = i
                 break
         print("真最大行数：" + str(real_max_row))
+        print("*"*50)
         return real_max_row
 
     # 读取链接记录
@@ -120,8 +121,7 @@ class Excel:
             temp = []
             for j in range(2, column+1):
                 try:
-                    for item in self.keywordTable.cell(i,j).value.split("，"):
-                        temp.append(item)
+                    temp.append(self.keywordTable.cell(i,j).value.split(" "))
                 except:
                     # log()
                     pass

@@ -30,13 +30,13 @@ class Youtube:
     def setKeyword(self, keywords:list):
         self.keyword = "+".join(keywords)
 
-    def searchVideo(self, scrollTime=300):
+    def searchVideo(self, scrollTime:int):
         try:
             searchUrl = "https://www.youtube.com/results?search_query={}&sp=EgIQAQ%253D%253D".format(self.keyword)
             self.browser.get(searchUrl)
             time.sleep(5)
 
-            # self.__scrollToBottom(scrollTime)
+            self.__scrollToBottom(scrollTime)
 
             video_cards = self.browser.find_elements(By.TAG_NAME, 'ytd-video-renderer')
 

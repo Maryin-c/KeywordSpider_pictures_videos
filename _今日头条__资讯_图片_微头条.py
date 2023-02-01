@@ -31,7 +31,7 @@ class Toutiao:
     def setKeyword(self, keywords:list):
         self.keyword = " ".join(keywords)
 
-    def searchNews(self, pageNumber=5):
+    def searchNews(self, pageNumber:int):
         for i in range(pageNumber):
             try:
                 self.__searchNews(i)
@@ -39,7 +39,7 @@ class Toutiao:
                 log(traceback.format_exc())
                 break
 
-    def searchMicro(self, pageNumber=5):
+    def searchMicro(self, pageNumber:int):
         for i in range(pageNumber):
             try:
                 self.__searchMicro(i)
@@ -47,7 +47,7 @@ class Toutiao:
                 log(traceback.format_exc())
                 break
 
-    def searchPicture(self, scrollTime=300):
+    def searchPicture(self, scrollTime:int):
         self.browser.get('https://so.toutiao.com/search?dvpf=pc&source=search_subtab_switch&keyword={}&pd=atlas&action_type=search_subtab_switch&page_num=0&search_id=&from=gallery&cur_tab_title=gallery'.format(self.keyword))
         time.sleep(5)
 

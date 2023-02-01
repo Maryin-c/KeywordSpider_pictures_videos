@@ -28,7 +28,7 @@ class Bilibili:
     def setKeyword(self, keywords:list):
         self.keyword = " ".join(keywords)
 
-    def video(self, pageNumber=5):
+    def video(self, pageNumber:int):
         for i in range(1, pageNumber):
             try:
                 self.__searchBilibiliVideos(i)
@@ -36,7 +36,7 @@ class Bilibili:
                 log(traceback.format_exc())
                 break
 
-    def article(self, pageNumber=5):
+    def article(self, pageNumber:int):
         for i in range(1, pageNumber):
             try:
                 self.__searchBilibiliArticle(i)

@@ -64,7 +64,7 @@ class Weixin:
                     self.driver.add_cookie(cookie)  # 加入cookies
             self.driver.refresh()
 
-    def searchArticle(self, pageNumber=40):
+    def searchArticle(self, pageNumber:int):
         self.driver.get('https://weixin.sogou.com/')
         wait = WebDriverWait(self.driver, 10)
         _input = wait.until(ec.presence_of_element_located((By.NAME, 'query')))

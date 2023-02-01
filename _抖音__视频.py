@@ -52,7 +52,7 @@ class Douyin:
                         print(cookie)
             self.browser.refresh()
 
-    def searchVideo(self, scrollTime=300):
+    def searchVideo(self, scrollTime:int):
         searchUrl = "https://www.douyin.com/search/" + self.keyword
         self.browser.get(searchUrl)
         self.browser.maximize_window()

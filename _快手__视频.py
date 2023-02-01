@@ -33,7 +33,7 @@ class KuaiShou:
     def setKeyword(self, keywords:list):
         self.keyword = " ".join(keywords)
 
-    def searchVideo(self, scrollTime=300):
+    def searchVideo(self, scrollTime:int):
         searchUrl = "https://www.kuaishou.com/search/video?searchKey=" + self.keyword
         self.browser.get(searchUrl)
         time.sleep(5)

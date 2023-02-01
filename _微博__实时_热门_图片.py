@@ -114,7 +114,7 @@ class Weibo:
         data = json.loads(response)
         return data
 
-    def current(self, page=5):
+    def current(self, page:int):
         for i in range(1, page):
             try:
                 self.__currentAnalysis(i)
@@ -122,7 +122,7 @@ class Weibo:
                 log(traceback.format_exc())
                 break
 
-    def hot(self, page=5):
+    def hot(self, page:int):
         for i in range(1, page):
             try:
                 self.__hotAnalysis(i)
@@ -130,7 +130,7 @@ class Weibo:
                 log(traceback.format_exc())
                 break
 
-    def picture(self, page=5):
+    def picture(self, page:int):
         for i in range(1, page):
             try:
                 self.__picAnalysis(i)

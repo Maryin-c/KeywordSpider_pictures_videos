@@ -57,7 +57,7 @@ class Zhihu:
             pyautogui.scroll(-400)
             time.sleep(0.2)
 
-    def searchArticle(self, scrollTime=300):
+    def searchArticle(self, scrollTime:int):
         self.driver.get('https://www.zhihu.com/search?q={}&type=content&utm_id=0&vertical=article'.format(self.keyword))
         self.driver.maximize_window()
 
@@ -85,7 +85,7 @@ class Zhihu:
         # driver.find_element(By.ID, "Popover1-toggle").send_keys("玫瑰\n")
         return
 
-    def searchAnswer(self, scrollTime=300):
+    def searchAnswer(self, scrollTime:int):
         self.driver.get('https://www.zhihu.com/search?q={}&type=content&utm_id=0&vertical=answer'.format(self.keyword))
         self.driver.maximize_window()
 
