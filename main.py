@@ -11,26 +11,28 @@ from tools import excel
 print(excel.keywordDict)
 
 # bili = Bilibili()
-# weibo = Weibo()
+weibo = Weibo()
 # zhihu = Zhihu()
 # toutiao = Toutiao()
 # kuaishou = KuaiShou()
 # douyin = Douyin()
 # youtube = Youtube()
-weixin = Weixin()
+# weixin = Weixin()
 
-i = 0
-for item in excel.keywordDict["软件"]:
+for item in excel.keywordDict["类型"]:
     print("start")
 
     # bili.setKeyword([item])
     # bili.article(pageNumber=2)
     # bili.video(pageNumber=2)
 
-    # weibo.setKeyword([item])
-    # weibo.current(page=2)
-    # weibo.hot(page=2)
-    # weibo.picture(page=2)
+    weibo.setKeyword(["笔记", item])
+    weibo.current(page=20)
+    excel.saveExcel()
+    weibo.hot(page=20)
+    excel.saveExcel()
+    weibo.picture(page=20)
+    excel.saveExcel()
 
     # zhihu.setKeyword([item])
     # zhihu.searchAnswer(50)
@@ -50,11 +52,11 @@ for item in excel.keywordDict["软件"]:
     # youtube.setKeyword([item])
     # youtube.searchVideo(20)
 
-    weixin.setKeyword([item])
-    weixin.searchArticle(2)
+    # weixin.setKeyword([item])
+    # weixin.searchArticle(2)
 
-    if i == 2:
-        break
-    i+=1
+    # if i == 2:
+    #     break
+    # i+=1
     # break
-    excel.saveExcel()
+    # excel.saveExcel()

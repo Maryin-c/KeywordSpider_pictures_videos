@@ -14,6 +14,7 @@ requests.DEFAULT_RETRIES = 5  # 增加重试连接次数
 
 def log(message:str):
     with open(log_path, 'a') as f:
+        f.write(time.ctime())
         f.write(message + "\r\n")
     # logging.debug(traceback.format_exc())
 
