@@ -1,6 +1,9 @@
 # 图片下载间隔
 picture_download_interval = 0.5
 
+# 连接等待时长
+requests_timeout = 30
+
 # 是否下载视频
 down_video = False
 

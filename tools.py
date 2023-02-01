@@ -8,7 +8,7 @@ import requests
 import time
 from settings import picture_download_interval, record_type, record_source, record_keyword, record_author, record_title, \
     record_introduction, record_tags, record_caption, record_url_article, record_url_pic, record_url_local, log_path, \
-    excel_path, down_video
+    excel_path, down_video, requests_timeout
 
 requests.DEFAULT_RETRIES = 5  # 增加重试连接次数
 
@@ -36,7 +36,7 @@ def getResModel(type:str, source:str, keyword:str, author:str,
     return res
 
 def download_pic(url:str, path:str):
-    r = requests.get(url)
+    r = requests.get(url, timeout=requests_timeout)
     try:
         open(path, 'wb').write(r.content) # 将内容写入图片
     except:

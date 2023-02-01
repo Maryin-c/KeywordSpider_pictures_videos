@@ -5,7 +5,7 @@ import requests
 import json
 
 from bs4 import BeautifulSoup
-from settings import weibo_current_path, weibo_hot_path, weibo_pic_path, record_url_local
+from settings import weibo_current_path, weibo_hot_path, weibo_pic_path, record_url_local, requests_timeout
 from tools import download_pic, log, excel, getResModel
 
 requests.DEFAULT_RETRIES = 5  # 增加重试连接次数
@@ -110,7 +110,7 @@ class Weibo:
         # url = "https://m.weibo.cn/api/container/getIndex?containerid=100103type%3D21%26q%3D%E7%AC%94%E8%AE%B0%26t%3D&page_type=searchall"
         s = requests.session()
         s.keep_alive = False  # 关闭多余连接
-        response = s.get(url=url).text
+        response = s.get(url=url, timeout=requests_timeout).text
         data = json.loads(response)
         return data
 

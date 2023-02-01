@@ -4,7 +4,7 @@ import traceback
 
 from bs4 import BeautifulSoup
 from settings import bilibili_video_path, bilibili_video_screen_shot_path, bilibili_article_picture_path, \
-    record_url_pic, record_url_local, record_tags
+    record_url_pic, record_url_local, record_tags, requests_timeout
 from tools import log, getResModel, download_pic, excel, download_video
 import requests
 requests.DEFAULT_RETRIES = 5  # 增加重试连接次数
@@ -77,7 +77,7 @@ class Bilibili:
 
     def __getBilibiliCookie(self):
         url = "https://bilibili.com"
-        res = requests.get(url)
+        res = requests.get(url, timeout=requests_timeout)
         return res.cookies
 
     def __recordData(self, resDict: dict):
@@ -88,7 +88,7 @@ class Bilibili:
         cookie = self.__getBilibiliCookie()
         s = requests.session()
         s.keep_alive = False  # 关闭多余连接
-        response = s.get(url=url, headers=self.bilibili_headers, cookies=cookie).text
+        response = s.get(url=url, headers=self.bilibili_headers, cookies=cookie, timeout=requests_timeout).text
         return response
 
     def __searchBilibiliVideos(self, page: int):
@@ -115,7 +115,7 @@ class Bilibili:
         if excel.checkHttpRepeat(url_article):
             return
 
-        html = requests.get(url_article).text
+        html = requests.get(url_article, timeout=requests_timeout).text
         soup = BeautifulSoup(html, 'html.parser')
 
         author = soup.find_all(class_="up-info__name")
