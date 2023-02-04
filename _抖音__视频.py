@@ -81,7 +81,12 @@ class Douyin:
                 pass
 
             tags = self.__getTags(introduction)
-            url_pic = video.find_element(By.TAG_NAME, "img").get_attribute("src")
+            # url_pic = video.find_element(By.TAG_NAME, "img").get_attribute("src")
+            try:
+                url_pic = video.find_element(By.TAG_NAME, "img").get_attribute("src")
+            except:
+                print("no pic")
+                continue
 
             temp = self.__divideDouyin(author=author, introduction=introduction,
                                         tags=tags, url_article=url, url_pic=url_pic,

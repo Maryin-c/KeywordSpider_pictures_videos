@@ -37,12 +37,11 @@ def getResModel(type:str, source:str, keyword:str, author:str,
     return res
 
 def download_pic(url:str, path:str):
-    r = requests.get(url, timeout=requests_timeout)
     try:
+        r = requests.get(url, timeout=requests_timeout)
         open(path, 'wb').write(r.content) # 将内容写入图片
     except:
         log(traceback.format_exc())
-    del r
     time.sleep(picture_download_interval)  # 停一下，别过分了
 
 def download_video(video_url: str, path:str, name:str):
@@ -105,7 +104,7 @@ class Excel:
         # self.nrows = 1
         self.ncolumns = self.table.max_column # 获得列数
         for i in range(1, self.nrows+1):
-            self.__recordHttps(self.table.cell(i,8).value)
+            self.__recordHttps(self.table.cell(i,9).value)
 
     # 读取tag记录
     def __initTags(self):
