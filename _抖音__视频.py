@@ -119,6 +119,8 @@ class Douyin:
 
     def __scrollToBottom(self, scrollTime:int):
         for i in range(scrollTime):
+            pos = pyautogui.size()
+            pyautogui.moveTo(pos.width / 2, pos.height / 2)
             pyautogui.scroll(-400)
             time.sleep(0.2)
 

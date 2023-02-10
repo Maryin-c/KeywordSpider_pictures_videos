@@ -1,13 +1,15 @@
 import json
 import os
 import time
+import traceback
+
 import pyautogui
 from selenium import webdriver  # 导入selenium包
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 
 from settings import zhihu_cookie_path, zhihu_answer_path, zhihu_article_path, record_url_local
-from tools import getResModel, excel, download_pic
+from tools import getResModel, excel, download_pic, log
 
 
 class Zhihu:
@@ -29,7 +31,7 @@ class Zhihu:
         self.__updateCookie()
 
     def setKeyword(self, keywords:list):
-        self.keyword = "+".join(keywords)
+        self.keyword = " ".join(keywords)
 
     def __updateCookie(self):
         self.driver.get('https://www.zhihu.com/search?type=content&q=')
@@ -54,6 +56,8 @@ class Zhihu:
 
     def __scrollToBottom(self, scrollTime:int):
         for i in range(scrollTime):
+            pos = pyautogui.size()
+            pyautogui.moveTo(pos.width / 2, pos.height / 2)
             pyautogui.scroll(-400)
             time.sleep(0.2)
 
@@ -102,7 +106,11 @@ class Zhihu:
             # number+=1
         # print(number)
         for url in urls:
-            self.__openQuestion(url, scrollTime)
+            try:
+                self.__openQuestion(url, scrollTime)
+            except:
+                log(url)
+                log(traceback.format_exc())
             # return
         # time.sleep(600)
         time.sleep(2)

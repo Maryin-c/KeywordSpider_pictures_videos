@@ -31,9 +31,10 @@ class Youtube:
         self.keyword = "+".join(keywords)
 
     def searchVideo(self, scrollTime:int):
-        try:
+        # try:
             searchUrl = "https://www.youtube.com/results?search_query={}&sp=EgIQAQ%253D%253D".format(self.keyword)
             self.browser.get(searchUrl)
+            self.browser.maximize_window()
             time.sleep(5)
 
             self.__scrollToBottom(scrollTime)
@@ -64,11 +65,13 @@ class Youtube:
                 download_pic(pic_url, temp[record_url_local])
                 download_video(url, youtube_video_path, self.keyword + str(excel.nrows))
                 excel.appendRecord(temp)
-        except:
-            log(traceback.format_exc())
+        # except:
+        #     log(traceback.format_exc())
 
     def __scrollToBottom(self, scrollTime:int):
         for i in range(scrollTime):
+            pos = pyautogui.size()
+            pyautogui.moveTo(pos.width / 2, pos.height / 2)
             pyautogui.scroll(-400)
             time.sleep(0.2)
 

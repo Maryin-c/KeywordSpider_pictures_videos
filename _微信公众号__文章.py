@@ -24,7 +24,7 @@ class Weixin:
 
         chrome_options = webdriver.ChromeOptions()
         if weixin_proxy is not None:
-            chrome_options.add_argument('--proxy-server={}'.format(weixin_proxy))  # 隧道域名:端口号
+            chrome_options.add_argument('--proxy-server=http://{}'.format(weixin_proxy))  # 隧道域名:端口号
         chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
         chrome_options.add_experimental_option('useAutomationExtension', False)
         chrome_options.add_argument("--disable-blink-features")
@@ -67,6 +67,7 @@ class Weixin:
 
     def searchArticle(self, pageNumber:int):
         self.driver.get('https://weixin.sogou.com/')
+        self.driver.maximize_window()
         wait = WebDriverWait(self.driver, 10)
         _input = wait.until(ec.presence_of_element_located((By.NAME, 'query')))
         # 搜索框中输入内容

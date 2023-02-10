@@ -36,6 +36,7 @@ class KuaiShou:
     def searchVideo(self, scrollTime:int):
         searchUrl = "https://www.kuaishou.com/search/video?searchKey=" + self.keyword
         self.browser.get(searchUrl)
+        self.browser.maximize_window()
         time.sleep(5)
         self.__scrollToBottom(scrollTime)
 
@@ -66,6 +67,8 @@ class KuaiShou:
 
     def __scrollToBottom(self, scrollTime:int):
         for i in range(scrollTime):
+            pos = pyautogui.size()
+            pyautogui.moveTo(pos.width / 2, pos.height / 2)
             pyautogui.scroll(-400)
             time.sleep(0.2)
 
